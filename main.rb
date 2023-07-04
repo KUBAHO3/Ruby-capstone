@@ -18,7 +18,16 @@ def options
        '13-Quit Application'
 end
 
-options
+def connection
+  loop do
+    options
+    number = gets.chomp.to_i
+    break if number == 13
+
+    user_input(number)
+  end
+  puts 'Thank you for using our App'
+end
 
 def user_input(number)
   case number
@@ -38,3 +47,5 @@ def user_input(number)
     puts 'Invalid number Entered'
   end
 end
+
+connection
