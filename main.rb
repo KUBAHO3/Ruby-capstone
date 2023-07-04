@@ -1,4 +1,7 @@
 require './item'
+require './item'
+require './game'
+require './author'
 
 def options
   puts 'Welcome to our Application'
