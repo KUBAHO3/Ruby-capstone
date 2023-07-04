@@ -1,4 +1,4 @@
-## Copyright 2021, KUBAHO LINNE Heaven
+## Copyright 2021, KUBAHO LINNE Heaven, Joy Phoebe & Aimable Bancunguye
 
 ###### Please delete this line and the next one
 ###### APP TYPE can be a webpage/website, a web app, a software and so on
