@@ -8,6 +8,8 @@ class Genre
   end
 
   def add_item(item: item)
+    @items << item
+    item.add_genre(self)
   end
 
   private
