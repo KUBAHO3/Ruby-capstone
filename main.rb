@@ -1,5 +1,4 @@
 require './item'
-require './item'
 require './game'
 require './author'
 
