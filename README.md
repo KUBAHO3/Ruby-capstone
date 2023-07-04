@@ -106,6 +106,11 @@ Not yet deployed ...
 - Twitter: [@KubahoH](https://twitter.com/KubahoH)
 - LinkedIn: [Kubaho Linne Heaven](https://www.linkedin.com/in/kubaho-linne-heaven/)
 
+:bust_in_silhouette: **Joy Phoebe**
+- GitHub: [@joyapisi](https://github.com/joyapisi)
+- Twitter: [@joyphoebe300](https://twitter.com/joyphoebe300)
+- LinkedIn: [Joy Phoebe](https://www.linkedin.com/in/joyapisi/)
+
 <!-- FUTURE FEATURES -->
 
 ## :telescope: Future Features <a name="future-features"></a><br/>
