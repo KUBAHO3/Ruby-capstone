@@ -26,13 +26,21 @@ class Operations
     def add_music
         puts "Please enter the music Album name"
         name = gets.chomp
-        puts "When did you publish the album?"
+        puts "When did you publish the album? use [DD/MM/YYYY]"
         publish_date = gets.chomp
         puts "Is it on Spotify?[Y/N]"
         on_spotify = gets.chomp
         %w[yes YES Y y].include?(on_spotify)
-        newAlbum = MusicAlbum.new(name, on_spotify, publish_date)
-        @music_album.push(newAlbum)
-        puts "'#{name}' is added successfully"
+        new_album = MusicAlbum.new(name, on_spotify, publish_date)
+        @music_album.push(new_album)
+        puts "'#{name}'Album is added successfully"
+    end
+
+    def create_genre
+        puts "Please enter the genre name"
+        name = gets.chomp
+        new_genre = Genre.new(name)
+        @genre.push(new_genre)
+        puts "'#{name}' genre is added successfully"
     end
 end
