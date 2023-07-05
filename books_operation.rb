@@ -2,7 +2,7 @@ require_relative 'book'
 require_relative 'label'
 
 def add_book
-  puts 'Enter the Book\'s name:'
+  puts 'Enter the Book\'s title:'
   title = gets.chomp
 
   puts 'Enter the Book\'s color:'
@@ -25,20 +25,18 @@ def add_book
 
   @labels << label
 
-  save_book
-
-  save_label
-
-  puts 'Your Book Has Been Successfully Created!'
+  puts '========================================'
+  puts 'Your book bas been successfully created!'
+  puts '========================================'
 end
 
 def list_books
   @books.each do |book|
-    puts '==============================='
+    puts '===================================='
     puts "Publisher: #{book.publisher} "
     puts "Cover Status: #{book.cover_state} "
     puts "published on: #{book.publish_date}"
-    puts '==============================='
+    puts '===================================='
   end
 end
 
@@ -46,28 +44,28 @@ def list_labels
   @labels.each { |label| puts "Title: #{label.title} color: #{label.color}" }
 end
 
-def handle_books
-    puts 'Choose an option'
-  
-    puts '1- List all books'
-    puts '2- List all labels (e.g. Gift, New)'
-    puts '3- Add a book'
-    puts '4- Back'
-  
-    choice = gets.chomp.to_i
-  
-    case choice
-    when 1
-      return puts 'No books available in the list yet!' if @books.empty?
-  
-      list_books
-    when 2
-      return puts 'No labels available in the list yet!' if @labels.empty?
-  
-      list_labels
-    when 3
-      add_book
-    when 4
-      nil
-    end
-end
+# def handle_books
+#     puts 'Choose an option'
+
+#     puts '1- List all books'
+#     puts '2- List all labels (e.g. Gift, New)'
+#     puts '3- Add a book'
+#     puts '4- Back'
+
+#     choice = gets.chomp.to_i
+
+#     case choice
+#     when 1
+#       return puts 'No books available in the list yet!' if @books.empty?
+
+#       list_books
+#     when 2
+#       return puts 'No labels available in the list yet!' if @labels.empty?
+
+#       list_labels
+#     when 3
+#       add_book
+#     when 4
+#       nil
+#     end
+# end

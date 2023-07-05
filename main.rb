@@ -1,4 +1,4 @@
-require './music_genre_op'
+require './books_operation'
 
 def options
   puts '----------------------------------------------',
@@ -18,8 +18,8 @@ def options
 end
 
 def connection
-  music_genre_operation = Operations.new
-  books_operation = 'Books'
+  # music_genre_operation = Operations.new
+  books_operation = Book.new
   games_operation = 'Games'
   methods_operation = [music_genre_operation, books_operation, games_operation]
   loop do
@@ -29,19 +29,19 @@ def connection
 
     user_input(methods_operation, number)
   end
-  puts 'Thank you for using our App'
+  puts 'Thank you for using our App!'
 end
 
 def user_input(methods_operation, number)
   music_genre_operation, = methods_operation
   actions = {
-    1 => -> { puts 'This will list a book' },
+    1 => -> { puts 'No books available in the list yet!' if @books.empty? list_books },
     2 => -> { music_genre_operation.list_music_albums },
     3 => -> { puts 'This will list the games' },
     4 => -> { music_genre_operation.list_genres },
-    5 => -> { puts 'This will list the labels' },
+    5 => -> { puts 'No labels available in the list yet!' if @labels.empty? list_labels },
     6 => -> { puts 'This will list the authours' },
-    7 => -> { puts 'This will add a book' },
+    7 => -> { add_a_book },
     8 => -> { music_genre_operation.add_music },
     9 => -> { music_genre_operation.create_genre },
     10 => -> { puts 'This will add a game' }
