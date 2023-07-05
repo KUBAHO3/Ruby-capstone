@@ -30,7 +30,7 @@ class Operations
     publish_date = gets.chomp
     puts 'Is it on Spotify?[Y/N]'
     on_spotify = gets.chomp
-    on_spotif = %w[yes YES Y y].include?(on_spotify)
+    on_spotif = %w[yes Yes YES Y y].include?(on_spotify)
     new_album = MusicAlbum.new(name, on_spotif, publish_date)
     @music_album.push(new_album)
     puts "'#{name}' Album is added successfully"
