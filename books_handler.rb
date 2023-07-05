@@ -32,5 +32,14 @@ def add_book
   puts 'Your Book Has Been Successfully Created!'
 end
 
+def list_books
+  @books.each do |book|
+    puts '==============================='
+    puts "Publisher: #{book.publisher} "
+    puts "Cover Status: #{book.cover_state} "
+    puts "published on: #{book.publish_date}"
+    puts '==============================='
+  end
+end
 
 end
