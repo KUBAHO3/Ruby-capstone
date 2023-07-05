@@ -1,3 +1,5 @@
+require 'json'
+
 require_relative 'book'
 require_relative 'label'
 
@@ -41,5 +43,10 @@ def list_books
     puts '==============================='
   end
 end
+
+def list_labels
+  @labels.each { |label| puts "Title: #{label.title} color: #{label.color}" }
+end
+
 
 end
