@@ -1,5 +1,4 @@
 require './music_album'
 require './genre'
-require './main'
 require './music_genre_op'
 require './item'
