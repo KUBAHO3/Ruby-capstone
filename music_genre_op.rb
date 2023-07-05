@@ -12,12 +12,12 @@ class Operations
     def list_music_albums
         puts "Sorry your music album list is empty" if @music_album.empty?
         @music_album.each_with_index do |album, index|
-            puts "(#{index}) Name: '#{album.name}' PublishedAt: '#{album.published_date}' Onspotify: '#{album.on_spotify}'"
+            puts "(#{index}) Name: '#{album.name}' PublishedAt: '#{album.publish_date}' Onspotify: '#{album.on_spotify}'"
         end
     end
 
     def list_genres
-        puts "Sorry your genre list is empty" if @genres.empty?
+        puts "Sorry your genre list is empty" if @genre.empty?
         @genre.each_with_index do |genre, index|
             puts "(#{index}) Name: '#{genre.name}'"
         end
@@ -30,10 +30,10 @@ class Operations
         publish_date = gets.chomp
         puts "Is it on Spotify?[Y/N]"
         on_spotify = gets.chomp
-        %w[yes YES Y y].include?(on_spotify)
-        new_album = MusicAlbum.new(name, on_spotify, publish_date)
+        on_spotif = %w[yes YES Y y].include?(on_spotify)
+        new_album = MusicAlbum.new(name, on_spotif, publish_date)
         @music_album.push(new_album)
-        puts "'#{name}'Album is added successfully"
+        puts "'#{name}' Album is added successfully"
     end
 
     def create_genre
