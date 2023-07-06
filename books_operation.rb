@@ -13,9 +13,7 @@ class BookHandler
   def fetch_json_data(file)
     file_path = "db/#{file}.json"
 
-    unless File.exist?(file_path)
-      FileUtils.touch(file_path)
-    end
+    FileUtils.touch(file_path) unless File.exist?(file_path)
 
     File.read(file_path)
   end
