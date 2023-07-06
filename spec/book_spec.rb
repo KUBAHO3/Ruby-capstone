@@ -1,28 +1,20 @@
-
 require_relative 'spec_helper'
 
-
 RSpec.describe Book do
-  describe '#initialize' do
-    it 'creates a new book with publisher, cover state, and publish date' do
-      book = Book.new('Publisher', 'Cover State', 'Publish Date')
-      expect(book.publisher).to eq('Publisher')
-      expect(book.cover_state).to eq('Cover State')
-      expect(book.publish_date).to eq('Publish Date')
-    end
+  it 'creates a book' do
+    book = Book.new('Joy', 'bad', Date.parse('2010-8-13'))
+
+    expect(book.publisher).to eq('Joy')
   end
 
+  it 'checks if the book is archivable' do
+    book1 = Book.new('Joy', 'bad', Date.parse('2010-8-13'))
+    expect(book1.can_be_archived?).to eq(true)
 
-  describe '#can_be_archived?' do
-    it 'returns true if the cover state is "bad"' do
-      book = Book.new('Publisher', 'bad', 'Publish Date')
-      expect(book.can_be_archived?).to be true
-    end
+    book2 = Book.new('Joy', 'Good', Date.parse('2018-8-13'))
+    expect(book2.can_be_archived?).to eq(false)
 
-
-    it 'returns the result from the superclass if the cover state is not "bad"' do
-      book = Book.new('Publisher', 'new', 'Publish Date')
-      expect(book.can_be_archived?).to be false
-    end
+    book3 = Book.new('Joy', 'Good', Date.parse('2010-10-10'))
+    expect(book3.can_be_archived?).to eq(true)
   end
 end

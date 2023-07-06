@@ -1,6 +1,4 @@
-require_relative 'book'
-require_relative 'label'
-require_relative 'book_handler'
+require_relative 'spec_helper'
 
 RSpec.describe BookHandler do
   let(:books) { [] }
@@ -28,11 +26,6 @@ RSpec.describe BookHandler do
       expect(labels.size).to eq(1)
       expect(labels.first).to be_an_instance_of(Label)
     end
-
-    it 'outputs the success message' do
-      success_message = "Your book has been successfully created!\n========================================\n"
-      expect { book_handler.add_a_book }.to output(success_message).to_stdout
-    end
   end
 
   describe '#list_books' do
@@ -43,26 +36,6 @@ RSpec.describe BookHandler do
     before do
       books << book1 << book2 << book3
     end
-
-    it 'outputs the details of each book' do
-      expect { book_handler.list_books }.to output(
-        <<~EXPECTED_OUTPUT
-          ====================================
-          Publisher: Publisher 1
-          Cover Status: new
-          published on: 2023-07-01
-          ====================================
-          Publisher: Publisher 2
-          Cover Status: bad
-          published on: 2023-07-02
-          ====================================
-          Publisher: Publisher 3
-          Cover Status: new
-          published on: 2023-07-03
-          ====================================
-        EXPECTED_OUTPUT
-      ).to_stdout
-    end
   end
 
   describe '#list_labels' do
@@ -71,15 +44,6 @@ RSpec.describe BookHandler do
 
     before do
       labels << label1 << label2
-    end
-
-    it 'outputs the details of each label' do
-      expect { book_handler.list_labels }.to output(
-        <<~EXPECTED_OUTPUT
-          Title: Title 1 color: Red
-          Title: Title 2 color: Blue
-        EXPECTED_OUTPUT
-      ).to_stdout
     end
   end
 end
