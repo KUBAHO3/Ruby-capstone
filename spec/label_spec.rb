@@ -1,4 +1,4 @@
-require_relative 'label'
+require_relative 'spec_helper'
 
 RSpec.describe Label do
   describe '#initialize' do

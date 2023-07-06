@@ -1,4 +1,4 @@
-require_relative 'book_handler'
+require_relative 'spec_helper'
 
 RSpec.describe BookHandler do
   describe '#initialize' do
