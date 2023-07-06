@@ -1,5 +1,6 @@
 require_relative 'book'
 require_relative 'label'
+require 'fileutils'
 
 class BookHandler
   attr_accessor :books, :labels
@@ -10,14 +11,23 @@ class BookHandler
   end
 
   def fetch_json_data(file)
-    if File.exist?("db/#{file}.json")
-      File.read("db/#{file}.json")
-    else
-      empty_json = [].to_json
-      File.write("db/#{file}.json", empty_json)
-      empty_json
+    file_path = "db/#{file}.json"
+
+    unless File.exist?(file_path)
+      FileUtils.touch(file_path)
     end
+
+    File.read(file_path)
   end
+
+  #   if File.exist?("db/#{file}.json")
+  #     File.read("db/#{file}.json")
+  #   else
+  #     empty_json = [].to_json
+  #     File.write("db/#{file}.json", empty_json)
+  #     empty_json
+  #   end
+  # end
 
   def retrieve_books
     books = JSON.parse(fetch_json_data('books'))
@@ -41,6 +51,8 @@ class BookHandler
                      'cover_state' => book.cover_state,
                      'publish_date' => book.publish_date }
     end
+
+    FileUtils.mkdir_p('db') unless File.directory?('db')
 
     File.write('db/books.json', JSON.pretty_generate(new_books))
   end
@@ -79,6 +91,10 @@ class BookHandler
     label.add_label(book)
 
     @labels << label
+
+    save_book
+
+    save_label
 
     puts '========================================'
     puts 'Your book bas been successfully created!'
