@@ -36,6 +36,7 @@ def connection
   end
 
   puts 'Thank you for using our App!'
+  music_genre_operation.keeping_data
 end
 
 def user_input(methods_operation, number, books, labels)
