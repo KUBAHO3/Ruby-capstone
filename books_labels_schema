@@ -1,0 +1,16 @@
+CREATE TABLE Label(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  title VARCHAR(256),
+  color VARCHAR,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE Book(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  label_id INT,
+  publisher VARCHAR(256),
+  cover_state BOOLEAN,
+  publish_date DATE,
+  PRIMARY KEY (id),
+  FOREIGN KEY (genre_id) REFERENCES Genre(id)
+);
