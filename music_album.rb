@@ -1,4 +1,4 @@
-require './item'
+require_relative './item.rb'
 
 class MusicAlbum < Item
   attr_reader :publish_date
