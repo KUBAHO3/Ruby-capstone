@@ -1,4 +1,4 @@
-require './books_operation'
+require 'books_operation'
 
 def options
   puts '----------------------------------------------',
