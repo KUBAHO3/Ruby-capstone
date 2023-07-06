@@ -9,6 +9,18 @@ class BookHandler
     @labels = labels
   end
 
+  def fetch_json_data(file)
+    if File.exist?("db/#{file}.json")
+      File.read("db/#{file}.json")
+    else
+      empty_json = [].to_json
+      File.write("db/#{file}.json", empty_json)
+      empty_json
+    end
+  end
+
+
+
   def add_a_book
     puts 'Enter the Book\'s title:'
     title = gets.chomp
