@@ -2,7 +2,14 @@ require_relative 'book'
 require_relative 'label'
 
 class BookHandler
-  def add_book
+  attr_accessor :books, :labels
+
+  def initialize(books, labels)
+    @books = books
+    @labels = labels
+  end
+
+  def add_a_book
     puts 'Enter the Book\'s title:'
     title = gets.chomp
 
@@ -22,7 +29,7 @@ class BookHandler
     @books << book
 
     label = Label.new(title, color)
-    label.add_item(book)
+    label.add_label(book)
 
     @labels << label
 
