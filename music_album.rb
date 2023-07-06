@@ -1,4 +1,4 @@
-require './item'
+require_relative 'item'
 
 class MusicAlbum < Item
   attr_reader :publish_date
@@ -9,8 +9,6 @@ class MusicAlbum < Item
     @on_spotify = on_spotify
     @name = name
   end
-
-  private
 
   def can_be_archived?()
     super && @on_spotify ? true : false
