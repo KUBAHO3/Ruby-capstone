@@ -1,4 +1,4 @@
-require 'books_operation'
+require_relative 'books_operation'
 
 def options
   puts '----------------------------------------------',
@@ -19,9 +19,9 @@ end
 
 def connection
   # music_genre_operation = Operations.new
-  books_operation = Book.new
+  books_operation = BookHandler.new
   games_operation = 'Games'
-  methods_operation = [music_genre_operation, books_operation, games_operation]
+  methods_operation = [books_operation, games_operation]
   loop do
     options
     number = gets.chomp.to_i
