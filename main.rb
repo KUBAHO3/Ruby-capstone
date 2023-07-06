@@ -1,4 +1,5 @@
 require_relative 'books_operation'
+require_relative 'music_genre_op'
 
 def options
   puts '----------------------------------------------',
@@ -21,10 +22,10 @@ def connection
   books = []
   labels = []
 
-  # music_genre_operation = Operations.new
+  music_genre_operation = Operations.new
   books_operation = BookHandler.new(books, labels)
   # games_operation = 'Games'
-  methods_operation = [books_operation]
+  methods_operation = [books_operation, music_genre_operation]
 
   loop do
     options
@@ -35,10 +36,11 @@ def connection
   end
 
   puts 'Thank you for using our App!'
+  music_genre_operation.keeping_data
 end
 
 def user_input(methods_operation, number, books, labels)
-  books_operation = methods_operation.first
+  books_operation, music_genre_operation = methods_operation
 
   actions = {
     1 => lambda {
