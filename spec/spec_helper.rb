@@ -5,4 +5,3 @@ require_relative '../music_genre_op'
 require_relative '../book'
 require_relative '../label'
 require_relative '../books_operation'
-
