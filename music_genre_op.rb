@@ -52,4 +52,15 @@ class Operations
     @genre.push(new_genre)
     puts "'#{name}' genre is added successfully"
   end
+
+  def keeping_data
+    File.open('genre.json', 'w+') do |file|
+      genre = JSON.dump(@genre)
+      file.write(genre)
+    end
+    File.open('music_album.json', 'w+') do |file|
+      music_album = JSON.dump(@music_album)
+      file.write(music_album)
+    end
+  end
 end
