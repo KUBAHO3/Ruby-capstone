@@ -41,11 +41,17 @@ def user_input(methods_operation, number, books, labels)
   books_operation = methods_operation.first
 
   actions = {
-    1 => -> { puts 'No books available in the list yet!' if books.empty?; books_operation.list_books },
+    1 => lambda {
+           puts 'No books available in the list yet!' if books.empty?
+           books_operation.list_books
+         },
     2 => -> { music_genre_operation.list_music_albums },
     3 => -> { puts 'This will list the games' },
     4 => -> { music_genre_operation.list_genres },
-    5 => -> { puts 'No labels available in the list yet!' if labels.empty?; books_operation.list_labels },
+    5 => lambda {
+           puts 'No labels available in the list yet!' if labels.empty?
+           books_operation.list_labels
+         },
     6 => -> { puts 'This will list the authours' },
     7 => -> { books_operation.add_a_book },
     8 => -> { music_genre_operation.add_music },
