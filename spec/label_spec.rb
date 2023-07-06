@@ -1,6 +1,5 @@
 require_relative 'spec_helper'
 
-
 RSpec.describe Label do
   describe '#initialize' do
     it 'creates a new label with title and color' do
@@ -11,7 +10,6 @@ RSpec.describe Label do
       expect(label.items).to be_empty
     end
   end
-
 
   describe '#add_label' do
     it 'adds a book to the label items' do
