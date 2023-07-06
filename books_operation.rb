@@ -19,6 +19,19 @@ class BookHandler
     end
   end
 
+  def retrieve_books
+    books = JSON.parse(fetch_json_data('books'))
+    labels = JSON.parse(fetch_json_data('labels'))
+
+    books.each do |book|
+      @books << Book.new(book['publisher'], book['cover_state'], book['publish_date'])
+    end
+
+    labels.each do |label|
+      @labels << Label.new(label['title'], label['color'])
+    end
+  end
+
 
 
   def add_a_book
