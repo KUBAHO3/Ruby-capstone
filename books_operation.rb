@@ -32,7 +32,29 @@ class BookHandler
     end
   end
 
+  def save_book
+    new_books = []
 
+    @books.each do |book|
+      new_books << { 'id' => book.id,
+                     'publisher' => book.publisher,
+                     'cover_state' => book.cover_state,
+                     'publish_date' => book.publish_date }
+    end
+
+    File.write('db/books.json', JSON.pretty_generate(new_books))
+  end
+
+  def save_label
+    new_labels = []
+
+    @labels.each do |label|
+      new_labels << { 'title' => label.title,
+                      'color' => label.color }
+    end
+
+    File.write('db/labels.json', JSON.pretty_generate(new_labels))
+  end
 
   def add_a_book
     puts 'Enter the Book\'s title:'
