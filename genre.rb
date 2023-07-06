@@ -11,4 +11,15 @@ class Genre
   def add_item(item)
     @items << item
   end
+
+  def to_json(*args)
+    {
+      JSON.create_id => self.class.name,
+      'data' => [@name, @items = []]
+    }.to_json(*args)
+  end
+
+  def self.json_create(object)
+    new(*object['data'])
+  end
 end
