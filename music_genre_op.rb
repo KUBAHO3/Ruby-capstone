@@ -1,3 +1,5 @@
+require 'json'
+
 require_relative 'genre'
 require_relative 'music_album'
 
@@ -5,8 +7,15 @@ class Operations
   attr_accessor :genre, :music_album
 
   def initialize
-    @genre = []
-    @music_album = []
+    created_genre_file = create_new_json('genre')
+    @genre = created_genre_file ? JSON.parse(created_genre_file.read, create_additions: true) : []
+    created_music_album_file = create_new_json('music_album')
+    @music_album = created_music_album_file ? JSON.parse(created_music_album_file.read, create_additions: true) : []
+  end
+
+  def create_new_json(file_name)
+    File.write("#{file_name}.json", []) unless File.exist?("#{file_name}.json")
+    File.open("#{file_name}.json", 'r')
   end
 
   def list_music_albums
