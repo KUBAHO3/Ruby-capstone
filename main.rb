@@ -1,5 +1,7 @@
 require_relative 'books_operation'
 require_relative 'music_genre_op'
+require_relative 'game'
+require_relative 'author'
 
 def options
   puts '----------------------------------------------',
