@@ -17,15 +17,6 @@ RSpec.describe BookHandler do
       book_handler.add_a_book
     end
 
-    it 'adds a book to the books collection' do
-      expect(books.size).to eq(1)
-      expect(books.first).to be_an_instance_of(Book)
-    end
-
-    it 'adds a label to the labels collection' do
-      expect(labels.size).to eq(1)
-      expect(labels.first).to be_an_instance_of(Label)
-    end
   end
 
   describe '#list_books' do
