@@ -16,7 +16,6 @@ RSpec.describe BookHandler do
       allow(book_handler).to receive(:gets).and_return(title, color, publisher, cover_state, publish_date)
       book_handler.add_a_book
     end
-
   end
 
   describe '#list_books' do
