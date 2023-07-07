@@ -16,7 +16,7 @@
   - [:hammer\_and\_wrench: Built With ](#hammer_and_wrench-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
-  - [🦻 WalkThrough Video ](#-walkthrough-video-)
+  - [🦻 WalkThrough Video ](#walkthrough-demo-)
   - [💻 Getting Started ](#-getting-started-)
     - [Prerequisites](#prerequisites)
     - [Setup](#setup)
@@ -72,7 +72,7 @@ This is a console app that will help you to keep a record of different types of 
 
 ## 🦻 WalkThrough Video <a name="#walkthrough-demo"></a>
 
--  Comming Soon...
+-  [WalkThrough Video](https://drive.google.com/file/d/1zT6ijUiCw_rajkHtKdGBdUIU1h4MGwTN/view?usp=sharing)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
