@@ -5,39 +5,16 @@ require 'fileutils'
 class BookHandler
   attr_accessor :books, :labels
 
-  def initialize(books, labels)
-    @books = books
-    @labels = labels
+  def initialize
+    created_books_file = create_new_json('books')
+    @books = created_books_file ? JSON.parse(created_books_file.read, create_additions: true) : []
+    created_labels_file = create_new_json('labels')
+    @labels = created_labels_file ? JSON.parse(created_labels_file.read, create_additions: true) : []
   end
 
-  def fetch_json_data(file)
-    file_path = "db/#{file}.json"
-
-    FileUtils.touch(file_path) unless File.exist?(file_path)
-
-    File.read(file_path)
-  end
-
-  #   if File.exist?("db/#{file}.json")
-  #     File.read("db/#{file}.json")
-  #   else
-  #     empty_json = [].to_json
-  #     File.write("db/#{file}.json", empty_json)
-  #     empty_json
-  #   end
-  # end
-
-  def retrieve_books
-    books = JSON.parse(fetch_json_data('books'))
-    labels = JSON.parse(fetch_json_data('labels'))
-
-    books.each do |book|
-      @books << Book.new(book['publisher'], book['cover_state'], book['publish_date'])
-    end
-
-    labels.each do |label|
-      @labels << Label.new(label['title'], label['color'])
-    end
+  def create_new_json(file_name)
+    File.write("#{file_name}.json", []) unless File.exist?("#{file_name}.json")
+    File.open("#{file_name}.json", 'r')
   end
 
   def save_book
@@ -49,10 +26,6 @@ class BookHandler
                      'cover_state' => book.cover_state,
                      'publish_date' => book.publish_date }
     end
-
-    FileUtils.mkdir_p('db') unless File.directory?('db')
-
-    File.write('db/books.json', JSON.pretty_generate(new_books))
   end
 
   def save_label
@@ -62,8 +35,6 @@ class BookHandler
       new_labels << { 'title' => label.title,
                       'color' => label.color }
     end
-
-    File.write('db/labels.json', JSON.pretty_generate(new_labels))
   end
 
   def add_a_book
@@ -100,6 +71,8 @@ class BookHandler
   end
 
   def list_books
+    puts 'No books available in the list yet!' if @books.empty?
+
     @books.each do |book|
       puts '===================================='
       puts "Publisher: #{book.publisher} "
@@ -110,6 +83,18 @@ class BookHandler
   end
 
   def list_labels
+    puts 'No labels available in the list yet!' if labels.empty?
     @labels.each { |label| puts "Title: #{label.title} color: #{label.color}" }
+  end
+
+  def keeping_data
+    File.open('books.json', 'w+') do |file|
+      books = JSON.dump(@books)
+      file.write(books)
+    end
+    File.open('labels.json', 'w+') do |file|
+      labels = JSON.dump(@labels)
+      file.write(labels)
+    end
   end
 end

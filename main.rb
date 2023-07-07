@@ -23,11 +23,8 @@ def options
 end
 
 def connection
-  books = []
-  labels = []
-
   music_genre_operation = Operations.new
-  books_operation = BookHandler.new(books, labels)
+  books_operation = BookHandler.new
   methods_operation = [books_operation, music_genre_operation]
 
   authors = []
@@ -43,11 +40,12 @@ def connection
     number = gets.chomp.to_i
     break if number == 11
 
-    user_input(methods_operation, number, books, labels, authors)
+    user_input(methods_operation, number, authors)
   end
 
   puts 'Thank you for using our App!'
   music_genre_operation.keeping_data
+  books_operation.keeping_data
 end
 
 def load_games_from_json
@@ -61,19 +59,17 @@ def load_games_from_json
   end
 end
 
-def user_input(methods_operation, number, books, labels, authors)
+def user_input(methods_operation, number, authors)
   books_operation, music_genre_operation, game_handler, author_handler = methods_operation
 
   actions = {
     1 => lambda {
-           puts 'No books available in the list yet!' if books.empty?
            books_operation.list_books
          },
     2 => -> { music_genre_operation.list_music_albums },
     3 => -> { game_handler.list_games },
     4 => -> { music_genre_operation.list_genres },
     5 => lambda {
-           puts 'No labels available in the list yet!' if labels.empty?
            books_operation.list_labels
          },
     6 => lambda {
