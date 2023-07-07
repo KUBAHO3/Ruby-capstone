@@ -1,5 +1,6 @@
 require_relative 'book'
 require_relative 'label'
+require 'fileutils'
 
 class BookHandler
   attr_accessor :books, :labels
@@ -7,6 +8,62 @@ class BookHandler
   def initialize(books, labels)
     @books = books
     @labels = labels
+  end
+
+  def fetch_json_data(file)
+    file_path = "db/#{file}.json"
+
+    FileUtils.touch(file_path) unless File.exist?(file_path)
+
+    File.read(file_path)
+  end
+
+  #   if File.exist?("db/#{file}.json")
+  #     File.read("db/#{file}.json")
+  #   else
+  #     empty_json = [].to_json
+  #     File.write("db/#{file}.json", empty_json)
+  #     empty_json
+  #   end
+  # end
+
+  def retrieve_books
+    books = JSON.parse(fetch_json_data('books'))
+    labels = JSON.parse(fetch_json_data('labels'))
+
+    books.each do |book|
+      @books << Book.new(book['publisher'], book['cover_state'], book['publish_date'])
+    end
+
+    labels.each do |label|
+      @labels << Label.new(label['title'], label['color'])
+    end
+  end
+
+  def save_book
+    new_books = []
+
+    @books.each do |book|
+      new_books << { 'id' => book.id,
+                     'publisher' => book.publisher,
+                     'cover_state' => book.cover_state,
+                     'publish_date' => book.publish_date }
+    end
+
+    FileUtils.mkdir_p('db') unless File.directory?('db')
+
+    File.write('db/books.json', JSON.pretty_generate(new_books))
+  end
+
+  def save_label
+    new_labels = []
+
+    @labels.each do |label|
+      new_labels << { 'title' => label.title,
+                      'color' => label.color }
+    end
+
+    File.write('db/labels.json', JSON.pretty_generate(new_labels))
   end
 
   def add_a_book
@@ -32,6 +89,10 @@ class BookHandler
     label.add_label(book)
 
     @labels << label
+
+    save_book
+
+    save_label
 
     puts '========================================'
     puts 'Your book bas been successfully created!'
