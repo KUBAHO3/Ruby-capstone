@@ -13,7 +13,6 @@ RSpec.describe Label do
     it 'creates a new label with title and color' do
       expect(@label.title).to eq('Title')
       expect(@label.color).to eq('Color')
-      
     end
   end
 
