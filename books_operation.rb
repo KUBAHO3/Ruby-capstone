@@ -18,15 +18,6 @@ class BookHandler
     File.read(file_path)
   end
 
-  #   if File.exist?("db/#{file}.json")
-  #     File.read("db/#{file}.json")
-  #   else
-  #     empty_json = [].to_json
-  #     File.write("db/#{file}.json", empty_json)
-  #     empty_json
-  #   end
-  # end
-
   def retrieve_books
     books = JSON.parse(fetch_json_data('books'))
     labels = JSON.parse(fetch_json_data('labels'))
