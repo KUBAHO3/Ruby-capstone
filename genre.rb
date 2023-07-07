@@ -1,4 +1,5 @@
-class Genre
+require_relative 'item'
+class Genre < Item
   attr_reader :id
   attr_accessor :items, :name
 
@@ -10,6 +11,7 @@ class Genre
 
   def add_item(item)
     @items << item
+    item.add_genre = self
   end
 
   def to_json(*args)
