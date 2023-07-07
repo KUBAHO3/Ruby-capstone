@@ -2,7 +2,7 @@ require_relative 'spec_helper'
 
 describe MusicAlbum do
   before :each do
-    @music_album = MusicAlbum.new('my_world', true, { day: 31, month: 5, year: 2000 })
+    @music_album = MusicAlbum.new('my_world', true, Date.today)
   end
 
   it 'Should return a MusicAlbum object' do
@@ -15,7 +15,7 @@ describe MusicAlbum do
     end
   end
 
-  it "should return true if parent's method returns true AND if on_spotify equals true" do
-    expect(@music_album.can_be_archived?).to eq true
+  it "should return false if parent's method returns false AND if on_spotify equals true" do
+    expect(@music_album.can_be_archived?).to eq false
   end
 end
