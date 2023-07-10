@@ -13,8 +13,8 @@ class BookHandler
   end
 
   def create_new_json(file_name)
-    File.write("#{file_name}.json", []) unless File.exist?("#{file_name}.json")
-    File.open("#{file_name}.json", 'r')
+    File.write("../classes/#{file_name}.json", []) unless File.exist?("#{file_name}.json")
+    File.open("../classes/#{file_name}.json", 'r')
   end
 
   def save_book
@@ -88,11 +88,11 @@ class BookHandler
   end
 
   def keeping_data
-    File.open('books.json', 'w+') do |file|
+    File.open('../classes/books.json', 'w+') do |file|
       books = JSON.dump(@books)
       file.write(books)
     end
-    File.open('labels.json', 'w+') do |file|
+    File.open('../classes/labels.json', 'w+') do |file|
       labels = JSON.dump(@labels)
       file.write(labels)
     end

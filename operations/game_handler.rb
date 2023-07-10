@@ -8,9 +8,9 @@ class GameHandler
   end
 
   def load_games_from_json
-    return unless File.exist?('games.json')
+    return unless File.exist?('../classes/games.json')
 
-    json_data = File.read('games.json')
+    json_data = File.read('../classes/games.json')
     game_data = JSON.parse(json_data)
 
     game_data.each do |game_info|

@@ -14,8 +14,8 @@ class Operations
   end
 
   def create_new_json(file_name)
-    File.write("#{file_name}.json", []) unless File.exist?("#{file_name}.json")
-    File.open("#{file_name}.json", 'r')
+    File.write("../classes/#{file_name}.json", []) unless File.exist?("#{file_name}.json")
+    File.open("../classes/#{file_name}.json", 'r')
   end
 
   def list_music_albums
@@ -54,11 +54,11 @@ class Operations
   end
 
   def keeping_data
-    File.open('genre.json', 'w+') do |file|
+    File.open('../classes/genre.json', 'w+') do |file|
       genre = JSON.dump(@genre)
       file.write(genre)
     end
-    File.open('music_album.json', 'w+') do |file|
+    File.open('../classes/music_album.json', 'w+') do |file|
       music_album = JSON.dump(@music_album)
       file.write(music_album)
     end

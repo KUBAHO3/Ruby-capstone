@@ -49,8 +49,8 @@ def connection
 end
 
 def load_games_from_json
-  if File.exist?('games.json')
-    json_data = File.read('games.json')
+  if File.exist?('../classes/games.json')
+    json_data = File.read('../classes/games.json')
     JSON.parse(json_data).map do |game_data|
       Game.new(game_data['title'], game_data['multiplayer'], Date.parse(game_data['last_played_at']))
     end
