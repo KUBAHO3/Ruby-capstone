@@ -8,9 +8,9 @@ class AuthorHandler
   end
 
   def load_authors_from_json
-    return unless File.exist?('../classes/authors.json')
+    return unless File.exist?('../data/authors.json')
 
-    json_data = File.read('../classes/authors.json')
+    json_data = File.read('../data/authors.json')
     author_data = JSON.parse(json_data)
 
     author_data.each do |author_info|

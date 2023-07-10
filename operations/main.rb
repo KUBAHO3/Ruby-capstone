@@ -1,7 +1,7 @@
 require_relative 'books_operation'
 require_relative 'music_genre_op'
-require_relative '../classes/game'
-require_relative '../classes/author'
+require '../classes/game'
+require '../classes/author'
 require_relative 'game_handler'
 require_relative 'author_handler'
 
@@ -49,8 +49,8 @@ def connection
 end
 
 def load_games_from_json
-  if File.exist?('../classes/games.json')
-    json_data = File.read('../classes/games.json')
+  if File.exist?('../data/games.json')
+    json_data = File.read('../data/games.json')
     JSON.parse(json_data).map do |game_data|
       Game.new(game_data['title'], game_data['multiplayer'], Date.parse(game_data['last_played_at']))
     end
