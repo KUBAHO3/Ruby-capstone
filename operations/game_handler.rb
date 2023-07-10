@@ -32,7 +32,7 @@ class GameHandler
       }
     end
 
-    File.write('games.json', JSON.dump(json_data))
+    File.write('../data/games.json', JSON.dump(json_data))
   end
 
   def list_games
