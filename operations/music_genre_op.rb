@@ -1,7 +1,7 @@
 require 'json'
 
-require_relative 'genre'
-require_relative 'music_album'
+require_relative '../classes/genre'
+require_relative '../classes/music_album'
 
 class Operations
   attr_accessor :genre, :music_album

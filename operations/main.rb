@@ -1,7 +1,7 @@
 require_relative 'books_operation'
 require_relative 'music_genre_op'
-require_relative 'game'
-require_relative 'author'
+require_relative '../classes/game'
+require_relative '../classes/author'
 require_relative 'game_handler'
 require_relative 'author_handler'
 
