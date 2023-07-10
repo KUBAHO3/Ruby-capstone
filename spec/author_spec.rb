@@ -1,5 +1,5 @@
-require_relative '../author'
-require_relative '../item'
+require_relative '../classes/author'
+require_relative '../classes/item'
 
 RSpec.describe Author do
   before :each do
